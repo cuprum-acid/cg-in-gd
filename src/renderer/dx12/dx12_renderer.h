@@ -112,7 +112,7 @@ namespace cg::renderer
 		void move_to_next_frame();
 		void wait_for_gpu();
 
-		static ComPtr<IDXGIFactory4> get_dxgi_factory() ;
+		static ComPtr<IDXGIFactory4> get_dxgi_factory();
 		void initialize_device(ComPtr<IDXGIFactory4>& dxgi_factory);
 		void create_direct_command_queue();
 		void create_swap_chain(ComPtr<IDXGIFactory4>& dxgi_factory);
@@ -126,8 +126,8 @@ namespace cg::renderer
 		void create_constant_buffer_view(const ComPtr<ID3D12Resource>& buffer, D3D12_CPU_DESCRIPTOR_HANDLE cpu_handler);
 
 		void create_root_signature(const D3D12_STATIC_SAMPLER_DESC* sampler_descriptors, UINT num_sampler_descriptors);
-		static std::filesystem::path get_shader_path() ;
-		static ComPtr<ID3DBlob> compile_shader(const std::string& entrypoint, const std::string& target) ;
+		std::filesystem::path get_shader_path();
+		ComPtr<ID3DBlob> compile_shader(const std::string& entrypoint, const std::string& target);
 		void create_pso();
 
 		void create_command_allocators();
@@ -135,7 +135,7 @@ namespace cg::renderer
 
 		void create_depth_buffer();
 
-		static D3D12_STATIC_SAMPLER_DESC get_sampler_descriptor() ;
+		static D3D12_STATIC_SAMPLER_DESC get_sampler_descriptor();
 
 
 		void create_resource_on_default_heap(ComPtr<ID3D12Resource>& resource, UINT size = 0, const std::wstring& name = L"", D3D12_RESOURCE_DESC* resource_descriptor = nullptr);
@@ -143,6 +143,5 @@ namespace cg::renderer
 		void copy_data(const void* buffer_data, UINT buffer_size, ComPtr<ID3D12Resource>& destination_resource, ComPtr<ID3D12Resource>& intermediate_resource, D3D12_RESOURCE_STATES state_after, int row_pitch = 0, int slice_pitch = 0);
 
 		void create_shader_resource_view(const ComPtr<ID3D12Resource>& texture, D3D12_CPU_DESCRIPTOR_HANDLE cpu_handler);
-
 	};
 }// namespace cg::renderer
